@@ -13,6 +13,7 @@ Có 2 giải pháp chính cho việc HA:
     - Master - Slave
     - Master - Master
 - Các giải pháp bên thứ ba: Cùng với mục đích của giải pháp Native là để nhất quán dữ liệu giữa các node với nhau nhưng cơ chế và mô hình khác với Native
+    - Group Replication
     - Galera Cluster
     - Share Storage
     - Percona Cluster
@@ -49,3 +50,14 @@ là một kiểu của giải pháp HA cho database, mục đích đồng bộ d
 ![image](https://user-images.githubusercontent.com/54473576/234460714-deafa432-c77a-4f69-9b26-4478f5acc93b.png)
 
 Tham khảo cách cấu hình [tại đây](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/2.%20Master%20%20Master/Master%20Master.md)
+
+## **2.2 Các giải pháp bên thứ ba**
+
+### **2.2.1 Group Replication**
+
+Group replication là một cách để triển khai cơ chế fault-tolerant, linh hoạt hơn. Quá trình này liên quan đến việc thiết lập một nhóm máy chủ, mỗi máy chủ đều tham gia vào việc đảm bảo dữ liệu được sao chép chính xác. Nếu máy chủ master gặp sự cố, sẽ có cuộc bình chọn thành viên để chọn các máy chủ slave làm máy chủ master mới từ nhóm đã cài đặt. Điều này cho phép các nút còn lại tiếp tục hoạt động, ngay cả khi gặp sự cố.
+
+Tham khảo cách cài đặt Group Replication [tại đây](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/3.%20Group%20Replication/3.%20Group%20Replication.md)
+
+### **2.2.2 Galera Cluster**
+
