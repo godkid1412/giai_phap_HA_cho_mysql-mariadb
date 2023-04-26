@@ -61,3 +61,20 @@ Tham khảo cách cài đặt Group Replication [tại đây](https://github.com
 
 ### **2.2.2 Galera Cluster**
 
+Galera Cluster là một giải pháp multi master cho database.Khi sử dụng galera cluster, application có thể read/write trên bất cứ node nào. Một node có thể thêm vào cluster hay gỡ ra khỏi cluster mà không có downtime dịch vụ
+
+Bản thân các database như mariadb, mysql, percona xtradb không được tích hợp sẵn bên tính năng multi master. Các database này sử dụng plugin là galera replication để sử dụng tính năng multi master do galera cluster cung cấp. Về bản chất, galera replication plugin sử dụng phiên bản mở rộng của mysql replication api, bản mở rộng này có tên **wsrep api**
+
+**Cách galera cluster hoạt động**
+Một writeset, chính là một transaction cần được replication trên các node. Transaction này sẽ được certificate trên từng node nhận được (qua replication) xem có conflict với bất cứ transaction nào đang có trong queue của node đó không. Nếu có thì replicated writeset này sẽ bị node discard. Nếu không thì replicated writeset này sẽ được applied. Một transaction chỉ xem là commit sau khi đã pass qua bước certificate trên tất cả các node. Điều này đảm bảo transaction đó đã được phân phối trên tất cả các node.
+
+> Reference: [Certification-Based Replication]()
+
+### **Điểm mạnh**
+- Giải pháp multi master hoàn chỉnh nên cho phép read/write trên bất cứ node nào
+- Multi thread slave nên cho phép writeset nhanh hơn
+- Không cần failover vì node nào cũng là master
+
+### **Điểm yếu**
+- Không có scale up về dung lượng do galera cluster thì tất cả node đều có dữ liệu giống hệt nhau
+- Vẫn có hiện tượng stale data do bất đồng bộ khi apply writeset trên các node
