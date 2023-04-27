@@ -68,9 +68,11 @@ Bản thân các database như mariadb, mysql, percona xtradb không được t�
 **Cách galera cluster hoạt động**
 Một writeset, chính là một transaction cần được replication trên các node. Transaction này sẽ được certificate trên từng node nhận được (qua replication) xem có conflict với bất cứ transaction nào đang có trong queue của node đó không. Nếu có thì replicated writeset này sẽ bị node discard. Nếu không thì replicated writeset này sẽ được applied. Một transaction chỉ xem là commit sau khi đã pass qua bước certificate trên tất cả các node. Điều này đảm bảo transaction đó đã được phân phối trên tất cả các node.
 
+Xem chi tiết hơn về cách hoạt động [tại đây](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/4.%20Galera%20Cluster/Flow_Control.md)
+
 > Reference: 
 >- [Certification-Based Replication](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/4.%20Galera%20Cluster/Certification-Based_Replication.md)
-> - [Flow Control]()
+
 
 ### **Điểm mạnh**
 - Giải pháp multi master hoàn chỉnh nên cho phép read/write trên bất cứ node nào
