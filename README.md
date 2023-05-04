@@ -71,7 +71,7 @@ Một writeset, chính là một transaction cần được replication trên c�
 Xem chi tiết hơn về cách hoạt động [tại đây](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/4.%20Galera%20Cluster/Flow_Control.md)
 
 > Reference: 
->- [Certification-Based Replication](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/4.%20Galera%20Cluster/Certification-Based_Replication.md)
+>- [Certification-Based Replication](https://galeracluster.com/library/documentation/certification-based-replication.html)
 
 
 ### **Điểm mạnh**
@@ -82,3 +82,4 @@ Xem chi tiết hơn về cách hoạt động [tại đây](https://github.com/g
 ### **Điểm yếu**
 - Không có scale up về dung lượng do galera cluster thì tất cả node đều có dữ liệu giống hệt nhau
 - Vẫn có hiện tượng stale data do bất đồng bộ khi apply writeset trên các node
+

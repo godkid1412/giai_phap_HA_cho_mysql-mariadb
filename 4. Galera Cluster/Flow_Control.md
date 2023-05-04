@@ -19,8 +19,5 @@ Có 4 kiểu chính của Flow Control:
 - Caching Up
 - Cluster Sync
 
-
-
-
 >Reference:
 > [Flow Control](https://galeracluster.com/library/documentation/node-states.html)
