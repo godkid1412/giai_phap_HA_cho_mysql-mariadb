@@ -12,8 +12,8 @@ Có 2 giải pháp chính cho việc HA:
 - Giải pháp Native: Được MySQL/MariaDB hỗ trợ
     - Master - Slave
     - Master - Master
-- Các giải pháp bên thứ ba: Cùng với mục đích của giải pháp Native là để nhất quán dữ liệu giữa các node với nhau nhưng cơ chế và mô hình khác với Native
     - Group Replication
+- Các giải pháp bên thứ ba: Cùng với mục đích của giải pháp Native là để nhất quán dữ liệu giữa các node với nhau nhưng cơ chế và mô hình khác với Native
     - Galera Cluster
     - Share Storage
     - Percona Cluster
