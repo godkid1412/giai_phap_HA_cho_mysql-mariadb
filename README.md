@@ -83,3 +83,9 @@ Xem chi tiết hơn về cách hoạt động [tại đây](https://github.com/g
 - Không có scale up về dung lượng do galera cluster thì tất cả node đều có dữ liệu giống hệt nhau
 - Vẫn có hiện tượng stale data do bất đồng bộ khi apply writeset trên các node
 
+
+||Master-Slave|Group Replication|Galera Cluster|
+|--|--|--|--|
+|Tự động chuyển từ Slave sang Master khi Master gặp sự cố|Không|Có|Có|
+|Cần user cho quá trình đồng bộ|Có|Có|Không|
+|Có khả năng mở rộng dung lượng|Không|Không|Không|
