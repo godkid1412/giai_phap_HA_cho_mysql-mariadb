@@ -28,6 +28,18 @@ Máy chủ Master sẽ gửi các binary-log đến máy chủ Slave. Máy chủ
 
 Các master và slave không nhất thiết phải luôn kết nối với nhau. Nó có thể được đưa về trạng thái offline và khi được kết nối lại, quá trình replication sẽ được tiếp tục ở thời điểm nó online.
 
+**Trên Master**
+Master phải ghi các sự kiện replica vào một tập tin log đặc biệt là binary log. Sau đó các slave đọc dữ liệu từ tập tin này
+
+Bất cứ khi nào slave kết nối với master, master tạo một luồng kết nối mới (Binary Log Dump Thread) 
+
+**Trên Slave**
+
+Khi quá trình replica được chạy, có 2 luồng chạy trên slave:
+- **Luồng nhập xuất(I/O thread)**: Kết nối với master, đọc các sự kiện trong binary log và sao chép vào tập tin relay log
+
+- **Luồng SQL(SQL Thread)**: đọc các sự kiện từ relay log được lưu trữ cục bộ trên slave (tập tin được ghi bởi luồng IO) và thực thi các sự kiện đó nhanh nhất có thể.
+
 **Binary-log là gì**
 
 Binary-log chứa những bản ghi ghi lại những thay đổi của các database. Nó chứa dữ liệu và cấu trúc của DB (có bao nhiêu bảng, bảng có bao nhiêu trường,...), các câu lệnh được thực hiện trong bao lâu,... Nó bao gồm các file nhị phân và các index.
@@ -42,6 +54,7 @@ Binary-log được lưu trữ ở dạng nhị phân không phải là dạng v
 
 Tham khảo cách cấu hình [tại đây](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/1.%20Master%20Slave/1.%20Master%20Slave.md)
 
+
 ### **2.1.2: Master - Master**
 
 là một kiểu của giải pháp HA cho database, mục đích đồng bộ dữ liệu giữa 2 DB master với nhau
@@ -51,13 +64,14 @@ là một kiểu của giải pháp HA cho database, mục đích đồng bộ d
 
 Tham khảo cách cấu hình [tại đây](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/2.%20Master%20%20Master/Master%20Master.md)
 
-## **2.2 Các giải pháp bên thứ ba**
-
 ### **2.2.1 Group Replication**
 
 Group replication là một cách để triển khai cơ chế fault-tolerant, linh hoạt hơn. Quá trình này liên quan đến việc thiết lập một nhóm máy chủ, mỗi máy chủ đều tham gia vào việc đảm bảo dữ liệu được sao chép chính xác. Nếu máy chủ master gặp sự cố, sẽ có cuộc bình chọn thành viên để chọn các máy chủ slave làm máy chủ master mới từ nhóm đã cài đặt. Điều này cho phép các nút còn lại tiếp tục hoạt động, ngay cả khi gặp sự cố.
 
 Tham khảo cách cài đặt Group Replication [tại đây](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/3.%20Group%20Replication/3.%20Group%20Replication.md)
+
+
+## **2.2 Các giải pháp bên thứ ba**
 
 ### **2.2.2 Galera Cluster**
 
