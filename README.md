@@ -120,10 +120,20 @@ Các tín năng chính:
 
 ### **2.2.3 Percona Cluster**
 
+Percona XtraDB Cluster là giải pháp HA cho MySQL. Nó tích hợp Percona Server cho MySQL và Percona XtraBackup sử dụng thư viện cửa `Galera` để đồng bộ multi-source replication.
 
+Một cluster bao gồm nhiều node, mỗi node chứa nhiều dữ liệu giống nhau được đồng bộ giữa các node với nhau.
 
-||Master-Slave|Group Replication|Galera Cluster|
-|--|--|--|--|
-|Tự động chuyển từ Slave sang Master khi Master gặp sự cố|Không|Có|Có|
-|Cần user cho quá trình đồng bộ|Có|Có|Không|
-|Có khả năng mở rộng dung lượng|Không|Không|Không|
+Giống với Galera, Percona có ít nhất 3 node luôn đồng bộ dữ liệu với nhau, tuy nhiên ta cũng có thể dùng hai node. Dữ liệu có thể được đọc/ghi lên bất kỳ node nào. Một máy chủ đứng ở bên trên tiếp nhận các truy vấn và phân phối lại một cách đồng đều cho các server.
+
+#### **Ưu đểm**
+
+- Khi thực thi một câu truy vấn (query), nó thực thi trên local của node. Tất cả dữ liệu luôn ở trên node, do vậy không cần truy cập từ xa
+- Không có trung tâm quản lý (central management). Ta có thể cho bất kì node nào ra khỏi cluster tại bất kỳ thời gian nào mà cluster vẫn tiếp tục mà không bị mất dữ liệu 
+- Giải pháp tốt cho mở rộng read workload.
+
+#### **Nhược điểm**
+
+- Phải copy toàn bộ dữ liệu từ node cũ đến node mới khi thêm một node mới.
+- Không hiệu quả cho giải pháp cần scaling cho việc ghi dữ liệu
+- Có nhiều bản sao của dữ liệu: 3 node thì ta có 3 bản sao của dữ liệu.
