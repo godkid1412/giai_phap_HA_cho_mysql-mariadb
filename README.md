@@ -120,6 +120,8 @@ Các tín năng chính:
 
 ### **2.2.3 Percona Cluster**
 
+
+
 ||Master-Slave|Group Replication|Galera Cluster|
 |--|--|--|--|
 |Tự động chuyển từ Slave sang Master khi Master gặp sự cố|Không|Có|Có|
