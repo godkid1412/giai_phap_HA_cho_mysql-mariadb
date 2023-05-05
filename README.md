@@ -137,3 +137,7 @@ Giống với Galera, Percona có ít nhất 3 node luôn đồng bộ dữ li�
 - Phải copy toàn bộ dữ liệu từ node cũ đến node mới khi thêm một node mới.
 - Không hiệu quả cho giải pháp cần scaling cho việc ghi dữ liệu
 - Có nhiều bản sao của dữ liệu: 3 node thì ta có 3 bản sao của dữ liệu.
+
+> Reference:
+>
+>[About Percona XtraDB Cluster](https://docs.percona.com/percona-xtradb-cluster/8.0/intro.html)
