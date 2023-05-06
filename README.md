@@ -72,7 +72,7 @@ Tham khảo cách cấu hình [tại đây](https://github.com/godkid1412/giai_p
 
 Group replication là một cách để triển khai cơ chế fault-tolerant, linh hoạt hơn. Quá trình này liên quan đến việc thiết lập một nhóm máy chủ, mỗi máy chủ đều tham gia vào việc đảm bảo dữ liệu được sao chép chính xác. Nếu máy chủ master gặp sự cố, sẽ có cuộc [bình chọn thành viên để chọn các máy chủ slave làm máy chủ master](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/3.%20Group%20Replication/New_Primary_Election) mới từ nhóm đã cài đặt. Điều này cho phép các nút còn lại tiếp tục hoạt động, ngay cả khi gặp sự cố.
 
-Tham khảo cách cài đặt Group Replication [tại đây](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/3.%20Group%20Replication/3.%20Group%20Replication.md)
+Tham khảo cách cài đặt Group Replication [tại đây](https://github.com/godkid1412/giai_phap_HA_cho_mysql-mariadb/blob/main/3.%20Group%20Replication/New_Primary_Election.md)
 
 ## **2.2 Các giải pháp bên thứ ba**
 
