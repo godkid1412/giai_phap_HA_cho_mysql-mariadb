@@ -9,7 +9,7 @@ Ngày nay, công nghệ thông tin đã ăn sâu vào nhiều lĩnh vực trong 
 - Đảm bảo tính an toàn của dữ liệu
 - Đảm bảo hệ thống không bị gián đoạn
 
-# 2. Các giải pháp
+# **2. Các giải pháp HA cho MySQL/MariaDB**
 
 Có 2 giải pháp chính cho việc HA:
 
@@ -129,7 +129,7 @@ Giống với Galera, Percona có ít nhất 3 node luôn đồng bộ dữ li�
 #### **Ưu đểm**
 
 - Khi thực thi một câu truy vấn (query), nó thực thi trên local của node. Tất cả dữ liệu luôn ở trên node, do vậy không cần truy cập từ xa
-- Không có trung tâm quản lý (central management). Ta có thể cho bất kì node nào ra khỏi cluster tại bất kỳ thời gian nào mà cluster vẫn tiếp tục mà không bị mất dữ liệu 
+- Không có trung tâm quản lý (central management). Ta có thể cho bất kì node nào ra khỏi cluster tại bất kỳ thời gian nào mà cluster vẫn tiếp tục mà không bị mất dữ liệu
 - Giải pháp tốt cho mở rộng read workload.
 
 #### **Nhược điểm**
